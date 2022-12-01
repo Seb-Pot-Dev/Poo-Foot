@@ -9,4 +9,8 @@ Class Nationality
         $this->_nationalityName=$name;
         $this->_allplayers=[];
     }
+    public function __toString()
+    {
+        return $this->_nationalityName;
+    }
 }

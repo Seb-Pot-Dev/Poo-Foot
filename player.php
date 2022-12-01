@@ -13,7 +13,7 @@ Class Player
         $this->_lastname=$lastname;
         $this->_firstname=$firstname;
         $this->_sexe=$sexe;
-        $this->_birthdate=new DateTime ($birthdate);
+        $this->_birthdate= $birthdate;
         $this->_nationality=$nationality;
         $this->_clubs=[];
     }
@@ -23,12 +23,28 @@ Class Player
     }
     public function getClub()
     {
-        echo "Le joueur ".$this." fait partie du/des clubs suivants : ";
+        $result =  "The player ".$this." is part of the following clubs : <br>";
         foreach($this->_clubs as $club)
         {
-            return $club."<br>";
+            $result.= $club."<br>"; // le ".=" AJOUTE a la variable "$result" les keys "club" du tableau "_clubs"
         }
+        return $result; //renvoie la var "$result" auquel a été ajouté les différents $club
     }
+    public function getNationality()
+    {
+        return "The player ".$this." has the ".$this->_nationality." nationaly.";
+    }
+    public function getAge()
+    {
+        $now=new DateTime();
+        $bd=new DateTime($this->_birthdate);
+        $age= date_diff($now, $bd);
+        return $age->y;
+    }
+    public function getInfo()
+    {
+        return "The ".$this->_nationality."player ".$this." born on ".$this->_birthdate. " got now ".$this->getAge()." years old and is playing for ";
+    } //probleme vient de array du club !!!!
     public function __toString()
     {
         return $this->_lastname." ".$this->_firstname;
