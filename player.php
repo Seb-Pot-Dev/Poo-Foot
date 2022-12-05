@@ -43,7 +43,12 @@ Class Player
     }
     public function getInfo()
     {
-        return "The ".$this->_nationality."player ".$this." born on ".$this->_birthdate. " got now ".$this->getAge()." years old and is playing for ";
+        $info= $this." born on ".$this->_birthdate. " is a ".$this->_nationality." ".$this->_sexe." player of ".$this->getAge()." years old. Here's his actual and past contracts :<br>";
+        foreach($this->_clubs as $club)
+        {
+            $info.= $club."<br>";
+        }
+        return $info;
     } //probleme vient de array du club !!!!
     public function __toString()
     {

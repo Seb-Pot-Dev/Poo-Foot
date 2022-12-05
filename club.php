@@ -22,7 +22,7 @@ Class Club
     
     public function getPlayers()
     {
-        $result =  "The club ".$this." is composed by the following players : <br>";
+        $result =  "<u><large> The club ".$this." is composed by the following players : </large></u><br>";
         foreach($this->_mercato as $players)
         {
             $result.= $players."<br>"; // le ".=" AJOUTE a la variable "$result" les keys "club" du tableau "_clubs"
